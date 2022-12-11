@@ -5,6 +5,7 @@ import $ from "jquery"
 import { browserHistory } from "react-router";
 import ReactDOM from "react-dom"
 import Home from "./home"
+import '../styles/login.css'
 
 class Login extends React.Component {
     
@@ -37,16 +38,16 @@ class Login extends React.Component {
     }
     render() {
       const qId = (new URLSearchParams(window.location.search).get("val") == "true")? true:false;
-      const undiv= <div class="d-grid" id="equis">
+      const undiv= <div className="d-grid" id="equis">
                     <div id="titulo">
-                      <div class="center">
-                        <div class="animated-text">Neural Network Color Classifier</div>
+                      <div className="center">
+                        <div className="animated-text">Neural Network Color Classifier</div>
                       </div>
                     </div>
-                    <div id="login" class="contenedor">
-                    <div class="center">
+                    <div id="login" className="contenedor">
+                    <div className="center">
                       <h1 className="AlignCenter" > Login </h1>
-                        <div class="formulario">
+                        <div className="formulario">
                           <div class="form-group">
                             <label class="form-label" for="User">Usuario</label>
                             <input placeholder="Ingrese el usuario" type="text" id="User" class="form-control" />
@@ -54,7 +55,7 @@ class Login extends React.Component {
                           <div class="form-group"><label class="form-label" for="password">Password</label>
                             <input placeholder="Ingrese su contraseña" type="password" id="password" class="form-control" />
                           </div>
-                          <button className="btn btn-primary" class="boton" onClick={() => this.validar(document.getElementById("User").value,document.getElementById("password").value)}>
+                          <button className="boton" onClick={() => this.validar(document.getElementById("User").value,document.getElementById("password").value)}>
                           Submit
                           </button>
                       </div>
