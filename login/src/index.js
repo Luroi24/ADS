@@ -10,7 +10,7 @@ import Login from "./components/login"
 
 const App = () => {
     return (
-        <div>
+        <div>   
             <Switch>
                 <Route exact path="/Proyecto/">
                     <Login />
@@ -18,7 +18,7 @@ const App = () => {
                 <Route exact path="/Proyecto/home">
                     <Home />
                 </Route>
-                <Route path="*" render={() => <Login />} />
+                <Route path="*" render={() => <h1>RECURSO NO ENCONTRADO</h1>} />
             </Switch>
         </div>
     );

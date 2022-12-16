@@ -1,24 +1,15 @@
 import React from "react";
-import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
 import $ from "jquery"
-import { browserHistory } from "react-router";
-import ReactDOM from "react-dom"
 import Home from "./home"
+import UserError from "./userError"
 import '../styles/login.css'
 
 class Login extends React.Component {
     
   state={
-    val: false,
+    val: 0,
   }
 
-    cambiar = () =>{
-        this.setState((state)=>({
-          val:true,
-          comp: <Home></Home>
-        }))
-    }
       validar=(usuario,password) =>{
         var datos={
             User: usuario,
@@ -27,17 +18,15 @@ class Login extends React.Component {
 
         $.get("http://localhost:8080/Proyecto/Login",datos, (resultado)=>{
           if(resultado[0].usuario !="error"){
-            this.state.val = true;
-            this.forceUpdate();
+            this.state.val = 1;
           }else{
-            alert("USUARIO NO REGISTRADO")
+            this.state.val = 2;
           }
-          
+          this.forceUpdate();
         })
      
     }
     render() {
-      const qId = (new URLSearchParams(window.location.search).get("val") == "true")? true:false;
       const undiv= <div className="d-grid" id="equis">
                     <div id="titulo">
                       <div className="center">
@@ -62,7 +51,7 @@ class Login extends React.Component {
                     </div>
                     </div>
             </div>
-       const esValido = (this.state.val) || qId?<Home></Home>: undiv
+      const esValido = (this.state.val=='2')?<UserError></UserError>: (this.state.val=='1') ?<Home></Home>:undiv;
         return(
           <div>
             {esValido}
